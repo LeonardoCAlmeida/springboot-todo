@@ -5,6 +5,7 @@ import com.todolist.todolist.Services.TodoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/todos")
@@ -30,5 +31,10 @@ public class TodoController {
     @DeleteMapping("{id}")
     List<Todo> delete(@PathVariable("id") Long id){
         return todoService.delete(id);
+    }
+
+    @GetMapping("{id}")
+    public Optional<Todo> show(@PathVariable("id") Long id) {
+        return todoService.show(id);
     }
 }
